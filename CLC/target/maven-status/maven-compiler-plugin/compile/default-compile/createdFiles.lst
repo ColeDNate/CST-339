@@ -1,3 +1,4 @@
+com\gcu\model\EventModel.class
 com\gcu\CLCApplication.class
 com\gcu\model\OrderModel.class
 com\gcu\controller\LoginController.class

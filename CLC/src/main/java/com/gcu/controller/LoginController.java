@@ -12,19 +12,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.model.EventModel;
 import com.gcu.model.LoginModel;
-import com.gcu.model.OrderModel;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 	
 	/**
-	 * Simple Hello World Controller that returns a View Name along with a model attribute named message
-	 * Invoke using /test2 URI
-	 * @param model Model to bind to the View
-	 * 
-	 * @return View name hello
+	 * this is the base page for logging in
+	 * @param model
+	 * @return
 	 */
 	@GetMapping("/")
 	public String display(Model model) {
@@ -35,6 +33,14 @@ public class LoginController {
 		return "login";
 	}
 	
+	
+	/**
+	 * After successfully logging in this page will be displayed
+	 * @param loginModel
+	 * @param bindingResult
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 		
@@ -46,21 +52,17 @@ public class LoginController {
 		
 		
 		//create some orders
-		List<OrderModel> orders = new ArrayList<OrderModel>();
-		orders.add(new OrderModel(01, "0000000001", "Product 1", 1.00f, 1));
-		orders.add(new OrderModel(02, "0000000002", "Product 2", 2.00f, 2));
-		orders.add(new OrderModel(03, "0000000003", "Product 3", 3.00f, 3));
-		orders.add(new OrderModel(04, "0000000004", "Product 4", 4.00f, 4));
-		orders.add(new OrderModel(05, "0000000005", "Product 5", 5.00f, 5));
+		List<EventModel> events = new ArrayList<EventModel>();
+		events.add(new EventModel("Event 1", 2023, 1, 1));
+		events.add(new EventModel("Event 2", 2023, 2, 2));
+		events.add(new EventModel("Event 3", 2023, 3, 3));
+		events.add(new EventModel("Event 4", 2023, 4, 4));
 
-		model.addAttribute("My Orders", "OrderModel");
-		model.addAttribute("orders", orders);
-		
-		//print form values
-		//System.out.println(String.format("Form with Username of %s and Password of %s", loginModel.getUsername(), loginModel.getPassword()) );
+		model.addAttribute("My Events", "EventModel");
+		model.addAttribute("events", events);
 		
 		//Navigate back
-		return "orders";
+		return "events";
 		
 	}
 
