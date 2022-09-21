@@ -1,7 +1,7 @@
 package com.gcu.model;
 
 import java.util.Calendar;
-
+//Start class
 public class EventModel{
 	
 	//variables?
