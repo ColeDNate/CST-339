@@ -1,16 +1,13 @@
 package com.gcu.model;
 
 import java.util.Calendar;
+
+
 //Start class
 public class EventModel{
 	
 	//variables?
 	private String eventName;
-	private int year;
-	private int month;
-	private int day;
-	private int hour;
-	private int minute;
 	private Calendar eventDate;
 	
 	//simple date constructor
