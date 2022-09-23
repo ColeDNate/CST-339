@@ -1,5 +1,7 @@
-com\gcu\model\EventModel.class
-com\gcu\CLCApplication.class
-com\gcu\model\OrderModel.class
+com\gcu\controller\RegisterController.class
+com\gcu\model\RegisterModel.class
 com\gcu\controller\LoginController.class
 com\gcu\model\LoginModel.class
+com\gcu\model\EventModel.class
+com\gcu\controller\HomeController.class
+com\gcu\CLCApplication.class

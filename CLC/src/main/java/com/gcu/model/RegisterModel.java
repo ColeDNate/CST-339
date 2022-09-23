@@ -30,7 +30,7 @@ public class RegisterModel {
 	
 	//phone number
 	@NotNull(message="Phone number is a required field")
-	@Size(min=1, max=32, message="Phone number must be between 1 and 32 characters")
+	@Size(min=10, max=11, message="Phone number must be between 10 and 11 characters")
 	private String phoneNumber;
 	
 	//user name
