@@ -24,12 +24,19 @@
 			Below you can sign in to access your schedule. Just click [Login/Register]!
 			</h3>
 		<!-- Nav Table -->
-			<table>
+			<table style = "position:absolute;">
 				<tr>
 					<td> Login/Register </td> 
 				</tr>
 				<tr>
-					<td colspan = "2"> <input type = "login" value = "Login/Register"/> </td>
+				<form action="#" th:action="@{login}" th:object="${homeModel}" method="post">
+					<td colspan = "2"> <input type = "submit" value = "Login"/> </td>
+				</form>
+				</tr>
+				<tr>
+				<form action="#" th:action="@{register}" th:object="${homeModel}" method="post">
+					<td colspan = "2"> <input type = "submit" value = "Register"/> </td>
+				</form>
 				</tr>
 			</table>
 			
