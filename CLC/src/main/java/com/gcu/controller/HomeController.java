@@ -19,12 +19,13 @@ import com.gcu.model.EventModel;
 import com.gcu.model.HomeModel;
 import com.gcu.controller.LoginController;
 import com.gcu.controller.RegisterController;
+import com.gcu.ScheduleInterface;
 
 
 
 @Controller
 @RequestMapping ("/home")
-public class HomeController {
+public class HomeController implements ScheduleInterface {
 	/**
 	 * This is HOME
 	 * @param model
