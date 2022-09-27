@@ -19,12 +19,13 @@ import com.gcu.model.EventModel;
 import com.gcu.model.HomeModel;
 import com.gcu.controller.LoginController;
 import com.gcu.controller.RegisterController;
+import com.gcu.ScheduleInterface;
 
 
 
 @Controller
 @RequestMapping ("/home")
-public class HomeController {
+public class HomeController implements ScheduleInterface {
 	/**
 	 * This is HOME
 	 * @param model
@@ -36,7 +37,18 @@ public class HomeController {
 		homeMod.addAttribute("homeModel", new HomeModel());
 		return "home";
 	}
-	
+	/**
+	 * This is REGISTER
+	 * @param model
+	 * @return
+	 */
+	/**@GetMapping("/register")
+	@PostMapping("/register")
+	public Class<RegisterController> dispReg(Class<RegisterController> dispReg) {
+		new RegisterController() dispReg = RegisterController.class;
+		return dispReg;
+	} */
+	//@GetMapping("/register")
 	@PostMapping("/register")
 	public String dispReg(Model logMod) {
 		logMod.addAttribute("Title", "Register");
@@ -56,6 +68,13 @@ public class HomeController {
 		return "login";
 	} 
 	
+	/**@GetMapping("/login")
+	@PostMapping("/login")
+	public Class<LoginController> dispLog(Class<LoginController> dispLog) {
+		new LoginController();
+		dispLog = LoginController.class;
+		return dispLog;
+	 }*/
 	
 	//TO CREATE /HOME/LOGIN/DOLOGIN/
 	@PostMapping("/doLogin")
@@ -82,4 +101,30 @@ public class HomeController {
 		return "events";
 		
 	}
+	
+	/**TO CREATE HOME/REGISTER
+	@PostMapping("/doRegister")
+	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
+		
+		//check validation
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("title", "register form");
+			return "register";
+		}
+		
+		
+		//create some orders
+		List<EventModel> events = new ArrayList<EventModel>();
+		events.add(new EventModel("Event 1", 2023, 1, 1));
+		events.add(new EventModel("Event 2", 2023, 2, 2));
+		events.add(new EventModel("Event 3", 2023, 3, 3));
+		events.add(new EventModel("Event 4", 2023, 4, 4));
+
+		model.addAttribute("My Events", "EventModel");
+		model.addAttribute("events", events);
+		
+		//Navigate back
+		return "events"; 
+		
+	}*/
 }
