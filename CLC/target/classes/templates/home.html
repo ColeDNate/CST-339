@@ -21,29 +21,27 @@
 		<!-- Body of webpage -->
 			<h3 style = "text-align:center; text-justify:auto; font-size:20px"> 
 			Welcome to the MySchedule.net website! Please use responsibly ;). <br/> <br/>
-			Below you can sign in to access your schedule. Just <br/> <br/>
-			enter your credentials and click [SUBMIT]!
+			Below you can sign in to access your schedule. Just click [Login/Register]!
 			</h3>
-		<!-- Copy/Pasted table for login -->
-			<table>
+		<!-- Nav Table -->
+			<table style = "position:absolute;">
 				<tr>
-					<td> User Name: </td> 
-					<td> <input type ="text" th:field = "*{username}" ></td>
-					<td> <h5 style = "color: red" th:if = "${#fields.hasErrors('username')}" th:errors = "*{username}"> Username Error </h5> </td>
+					<td> Login/Register </td> 
 				</tr>
 				<tr>
-					<td> Password: </td> 
-					<td> <input type ="password" th:field = "*{password}" ></td>
-					<td> <h5 style = "color: red" th:if = "${#fields.hasErrors('password')}" th:errors = "*{password}"> Password Error </h5> </td>
+				<form action="#" th:action="@{login}" th:object="${homeModel}" method="post">
+					<td colspan = "2"> <input type = "submit" value = "Login"/> </td>
+				</form>
 				</tr>
 				<tr>
-					<td colspan = "2"> <input type = "submit" value = "SUBMIT"/> </td>
+				<form action="#" th:action="@{register}" th:object="${homeModel}" method="post">
+					<td colspan = "2"> <input type = "submit" value = "Register"/> </td>
+				</form>
+				</tr>
 			</table>
 			
-			<div th:if = "${#fields.hasErrors('*')}"> <h3 style = "color:darkcyan"> List of Errors: </h3> </div>
-			<div th:each = "err: ${#fields.errors('*')}">
-				<span style = "color: darkred" th:text = "${err}" class="fieldError"> </span>
-			</div>
+			
+			<!-- Footer -->
 			<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
 		  <footer> 
 		   	<h6 style = "position:absolute; "> We are not responsible for how users utilize this sight, and waive any responsibility for misconduct. <br/> <br/> <br/>
