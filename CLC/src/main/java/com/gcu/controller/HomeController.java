@@ -1,5 +1,10 @@
 package com.gcu.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,12 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gcu.model.RegisterModel;
 import com.gcu.model.LoginModel;
+import com.gcu.model.EventModel;
 import com.gcu.model.HomeModel;
+import com.gcu.controller.LoginController;
+import com.gcu.controller.RegisterController;
+import com.gcu.ScheduleInterface;
+
 
 
 @Controller
 @RequestMapping ("/home")
-public class HomeController {
+public class HomeController implements ScheduleInterface {
 	/**
 	 * This is HOME
 	 * @param model
@@ -32,10 +42,17 @@ public class HomeController {
 	 * @param model
 	 * @return
 	 */
+	/**@GetMapping("/register")
 	@PostMapping("/register")
-	public String dispReg(Model dispReg) {
-		dispReg.addAttribute("Title", "Register");
-		dispReg.addAttribute("registerModel", new RegisterModel());
+	public Class<RegisterController> dispReg(Class<RegisterController> dispReg) {
+		new RegisterController() dispReg = RegisterController.class;
+		return dispReg;
+	} */
+	//@GetMapping("/register")
+	@PostMapping("/register")
+	public String dispReg(Model logMod) {
+		logMod.addAttribute("Title", "Register");
+		logMod.addAttribute("registerModel", new RegisterModel());
 		return "register";
 	}
 	/**
@@ -43,10 +60,71 @@ public class HomeController {
 	 * @param model
 	 * @return
 	 */
+	//@GetMapping("/login")
 	@PostMapping("/login")
 	public String dispLog(Model logMod) {
-		logMod.addAttribute("Title", "Register");
+		logMod.addAttribute("Title", "Login");
 		logMod.addAttribute("loginModel", new LoginModel());
 		return "login";
+	} 
+	
+	/**@GetMapping("/login")
+	@PostMapping("/login")
+	public Class<LoginController> dispLog(Class<LoginController> dispLog) {
+		new LoginController();
+		dispLog = LoginController.class;
+		return dispLog;
+	 }*/
+	
+	//TO CREATE /HOME/LOGIN/DOLOGIN/
+	@PostMapping("/doLogin")
+	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
+		
+		//check validation
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("title", "login form");
+			return "login";
+		}
+		
+		
+		//create some orders
+		List<EventModel> events = new ArrayList<EventModel>();
+		events.add(new EventModel("Event 1", 2023, 1, 1));
+		events.add(new EventModel("Event 2", 2023, 2, 2));
+		events.add(new EventModel("Event 3", 2023, 3, 3));
+		events.add(new EventModel("Event 4", 2023, 4, 4));
+
+		model.addAttribute("My Events", "EventModel");
+		model.addAttribute("events", events);
+		
+		//Navigate back
+		return "events";
+		
 	}
+	
+	/**TO CREATE HOME/REGISTER
+	@PostMapping("/doRegister")
+	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
+		
+		//check validation
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("title", "register form");
+			return "register";
+		}
+		
+		
+		//create some orders
+		List<EventModel> events = new ArrayList<EventModel>();
+		events.add(new EventModel("Event 1", 2023, 1, 1));
+		events.add(new EventModel("Event 2", 2023, 2, 2));
+		events.add(new EventModel("Event 3", 2023, 3, 3));
+		events.add(new EventModel("Event 4", 2023, 4, 4));
+
+		model.addAttribute("My Events", "EventModel");
+		model.addAttribute("events", events);
+		
+		//Navigate back
+		return "events"; 
+		
+	}*/
 }
