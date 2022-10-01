@@ -1,4 +1,4 @@
-package com.gcu.controller;
+package com.gcu.service;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gcu.ScheduleInterface;
 import com.gcu.model.EventModel;
 import com.gcu.*;
 	
@@ -18,13 +17,15 @@ import com.gcu.*;
 @RequestMapping("/login/doLogin/service")
 public class ScheduleRestService {
 
-	public @Autowired ScheduleInterface schedule;
+	/* TODO: function needs fixing
+	 * 
+	public @Autowired ScheduleServiceInterface schedule;
 	@GetMapping(path = "/getjson", 
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<EventModel> getOrdersAsJson() {
 		return schedule.events(null);
 	}
-	
+	*/
 	@GetMapping(path = "/getxml", produces = {MediaType.APPLICATION_XML_VALUE})
 	//instructions show 'OrdersList' but this returns an error, so 'OrderList' was used.
 	public EventModel getOrdersAsXml() {

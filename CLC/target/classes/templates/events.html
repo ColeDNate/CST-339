@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+		<!-- COMMENT -->
 <html xmlns:th="http://www.thymeleaf.org" 
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
 	layout:decorate"layouts/defaultTemplate">
@@ -14,7 +14,7 @@
 	}
 	</style>
 	
-	<body>
+	<body style = "background-color:rgb(180, 154, 118); font-family:'Times New Roman', Times, serif; color:aqua">
 		
 		<div layout:fragment="content">
 			
@@ -33,9 +33,9 @@
 						<td style="text-align:center"><h5 th:text="${event.eventName}">event 1</h5></td>
 						<td style="text-align:center">
 							<h5 style="white-space: nowrap;"> 
-								<p th:text="${event.getMonth}">date 1 </p><p>/</p>
-								<p th:text="${event.getDay}">date 1</p><p>/</p>
-								<p th:text="${event.getYear}">date 1</p>
+								<p th:text="${event.getMonth}">Month</p><p>/</p>
+								<p th:text="${event.getDay}">1</p><p>/</p>
+								<p th:text="${event.getYear}">0001</p>
 							</h5>
 						</td>
 					</tr>
