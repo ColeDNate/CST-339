@@ -1,8 +1,5 @@
 package com.gcu.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
 import com.gcu.service.ScheduleServiceInterface;
-import com.gcu.model.LoginModel;
-import com.gcu.model.EventModel;
 
 
 
 @Controller
 @Primary
-@RequestMapping ("/home")
+@RequestMapping ("/scheduler")
 public class HomeController {
 	
 	
@@ -39,8 +35,8 @@ public class HomeController {
 	 * @return
 	 */
 	@GetMapping("/")
-	public String dispHome(Model homeMod) {
-		homeMod.addAttribute("Title", "Home");
+	public String displayHome(Model model) {
+		model.addAttribute("Title", "Home");
 		return "home";
 	}
 	/**
@@ -48,17 +44,10 @@ public class HomeController {
 	 * @param model
 	 * @return
 	 */
-	/**@GetMapping("/register")
 	@PostMapping("/register")
-	public Class<RegisterController> dispReg(Class<RegisterController> dispReg) {
-		new RegisterController() dispReg = RegisterController.class;
-		return dispReg;
-	} */
-	//@GetMapping("/register")
-	@PostMapping("/register")
-	public String dispReg(Model logMod) {
-		logMod.addAttribute("Title", "Register");
-		logMod.addAttribute("registerModel", new RegisterModel());
+	public String displayRegister(Model model) {
+		model.addAttribute("Title", "Register");
+		model.addAttribute("registerModel", new RegisterModel());
 		return "register";
 	}
 	/**
@@ -66,24 +55,15 @@ public class HomeController {
 	 * @param model
 	 * @return
 	 */
-	//@GetMapping("/login")
 	@PostMapping("/login")
-	public String dispLog(Model logMod) {
-		logMod.addAttribute("Title", "Login");
-		logMod.addAttribute("loginModel", new LoginModel());
+	public String displayLogin(Model model) {
+		model.addAttribute("Title", "Login");
+		model.addAttribute("loginModel", new LoginModel());
 		return "login";
 	} 
 	
-	/**@GetMapping("/login")
-	@PostMapping("/login")
-	public Class<LoginController> dispLog(Class<LoginController> dispLog) {
-		new LoginController();
-		dispLog = LoginController.class;
-		return dispLog;
-	 }*/
-	
-	//TO CREATE /HOME/LOGIN/DOLOGIN/
-	@PostMapping("/doLogin")
+	//Redirects to home/events
+	@RequestMapping("/events")
 	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) {
 		
 		//check validation
@@ -98,25 +78,5 @@ public class HomeController {
 		
 		//Navigate back
 		return "events";
-		
-	}
-	
-	//TO CREATE HOME/REGISTER
-	@PostMapping("/doRegister")
-	public String doLogin(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
-		
-		//check validation
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("title", "register form");
-			return "register";
-		}
-
-		//standard page attributes
-		model.addAttribute("My Events", "EventModel");
-		model.addAttribute("events", service.getEvents());  //including the service function
-		
-		//Navigate back
-		return "events"; 
-		
 	}
 }

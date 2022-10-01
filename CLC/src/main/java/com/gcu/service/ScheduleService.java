@@ -10,22 +10,13 @@ public class ScheduleService implements ScheduleServiceInterface {
 	private List<EventModel> eventList;
 
 	public List<EventModel> getEvents() {
-		
-		//create some events
-		/*
-		List<EventModel> eventList = new ArrayList<EventModel>();
-		eventList.add(new EventModel("Event 1", 2023, 1, 1));
-		eventList.add(new EventModel("Event 2", 2023, 2, 2));
-		eventList.add(new EventModel("Event 3", 2023, 3, 3));
-		eventList.add(new EventModel("Event 4", 2023, 4, 4));
-		*/
 		//return list of events
 		return eventList;
 	}
 	
 	//Add Event adds an event to the list of the events
 	public void addEvent(String name, int year, int month, int day) {
-		
+		eventList.add(new EventModel(name, year, month, day));
 	}
 	
 	
