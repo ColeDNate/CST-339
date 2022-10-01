@@ -2,11 +2,16 @@ package com.gcu.model;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 //Start class
 public class EventModel{
 	
 	//variables?
+	@NotNull(message="Event name is a required field")
+	@Size(min=1, max=32, message="User name must between 1 and 32 characters")
 	private String eventName;
 	private Calendar eventDate;
 	
@@ -19,6 +24,11 @@ public class EventModel{
 	public EventModel(String eventName, int year, int month, int day, int hour, int minute) {
 		setEventName(eventName);
 		setDate(year, month, day, hour, minute);
+	}
+	//string and calendar overload
+	public EventModel(String eventName, Calendar eventDate) {
+		setEventName(eventName);
+		setDate(eventDate);
 	}
 	
 	
@@ -42,6 +52,17 @@ public class EventModel{
 	}
 	//date with time
 	public void setDate(int year, int month, int day, int hour, int minute) {
+		eventDate = Calendar.getInstance();
+		eventDate.set(year, month, day, hour, minute);
+	}
+	public void setDate(Calendar date) {
+		
+		int year = date.get(Calendar.YEAR);
+		int month = date.get(Calendar.MONTH);
+		int day = date.get(Calendar.DAY_OF_MONTH);
+		int hour = date.get(Calendar.HOUR);
+		int minute = date.get(Calendar.MINUTE);
+
 		eventDate = Calendar.getInstance();
 		eventDate.set(year, month, day, hour, minute);
 	}

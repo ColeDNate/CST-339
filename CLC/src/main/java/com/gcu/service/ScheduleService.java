@@ -1,6 +1,7 @@
 package com.gcu.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.gcu.model.EventModel;
@@ -17,6 +18,10 @@ public class ScheduleService implements ScheduleServiceInterface {
 	//Add Event adds an event to the list of the events
 	public void addEvent(String name, int year, int month, int day) {
 		eventList.add(new EventModel(name, year, month, day));
+	}
+	//add Event overload uses a name and calendar date
+	public void addEvent(String name, Calendar date) {
+		eventList.add(new EventModel(name, date));
 	}
 	
 	
