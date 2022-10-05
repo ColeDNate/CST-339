@@ -23,6 +23,12 @@ public class ScheduleService implements ScheduleServiceInterface {
 	public void addEvent(String name, Calendar date) {
 		eventList.add(new EventModel(name, date));
 	}
+	//test add
+	public EventModel addEvent() {
+		EventModel event = new EventModel("fake event", 1, 1, 1);
+		eventList.add(event);
+		return event;
+	}
 	
 	
 	//Initializes the event list

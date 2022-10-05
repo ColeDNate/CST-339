@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate"layouts/defaultTemplate">
+	
+	<head>
+	</head>
+	
+	<!-- this style seciont is so that the date will be displayed without line breaks -->
+	<style>
+	p{
+		display:inline;
+	}
+	</style>
+	
+	<body style = "background-color:rgb(180, 154, 118); font-family:'Times New Roman', Times, serif; color:aqua">
+		
+		<div layout:fragment="content">
+		
+			<!-- test add section -->
+			<form action="#" th:action="@{events}" th:object="${eventModel}" method="post">
+				<h3>Add new event</h3>
+				<table>
+					<tr>
+						<td>Event Name:</td><td><input type="text" th:field="*{eventName}"></td>
+							<td><h5 style="color:red" th:if="${#fields.hasErrors('eventName')}" th:erros="*{eventName}">Event Name Errors</h5></td>
+					</tr>
+				</table>
+				<table>	
+					<tr>
+						<!--
+						<td>Event Date:</td><td><input type="date" th:field="*{eventDate}"></td>
+						-->
+						
+						<td>Event Day:</td>
+						<td><select th:field="*{day}">
+							<option th:value="1">1</option>
+							<option th:value="2">2</option>
+							<option th:value="3">3</option>
+							<option th:value="4">4</option>
+							<option th:value="5">5</option>
+							<option th:value="6">6</option>
+							<option th:value="7">7</option>
+							<option th:value="8">8</option>
+							<option th:value="9">9</option>
+							<option th:value="10">10</option>
+							<option th:value="11">11</option>
+							<option th:value="12">12</option>
+							<option th:value="13">13</option>
+							<option th:value="14">14</option>
+							<option th:value="15">15</option>
+							<option th:value="16">16</option>
+							<option th:value="17">17</option>
+							<option th:value="18">18</option>
+							<option th:value="19">19</option>
+							<option th:value="20">20</option>
+							<option th:value="21">21</option>
+							<option th:value="22">22</option>
+							<option th:value="23">23</option>
+							<option th:value="24">24</option>
+							<option th:value="25">25</option>
+							<option th:value="26">26</option>
+							<option th:value="27">27</option>
+							<option th:value="28">28</option>
+							<option th:value="29">29</option>
+							<option th:value="30">30</option>
+							<option th:value="31">31</option>
+						</select></td>
+						<td>Event Month:</td>
+						<td><select th:field="*{month}">
+							<option th:value="1">1</option>
+							<option th:value="2">2</option>
+							<option th:value="3">3</option>
+							<option th:value="4">4</option>
+							<option th:value="5">5</option>
+							<option th:value="6">6</option>
+							<option th:value="7">7</option>
+							<option th:value="8">8</option>
+							<option th:value="9">9</option>
+							<option th:value="10">10</option>
+							<option th:value="11">11</option>
+							<option th:value="12">12</option>
+						</select></td>
+						<td>Event Year:</td>
+						<td><select th:field="*{year}">
+							<option th:value="2022">2022</option>
+							<option th:value="2023">2023</option>
+							<option th:value="2024">2024</option>
+							<option th:value="2025">2025</option>
+							<option th:value="2026">2026</option>
+							<option th:value="2027">2027</option>
+						</select></td>
+						
+					</tr>
+					
+					<tr>
+						<td><input type="submit" value="Add Event"></td>
+					</tr>
+				</table>
+				
+				
+				<div th:if="${#fields.hasErrors('*')}">List of Error</div>
+				<div th:each="err : ${#fields.errors('*')}">
+					<span style="color:red" th:text="${err}" class="fieldError"></span>
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html>

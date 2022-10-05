@@ -7,6 +7,7 @@ import com.gcu.model.EventModel;
 public interface ScheduleServiceInterface {
 
 	public List<EventModel> getEvents();
+	public EventModel addEvent();
 	public void init();
 	public void destroy();
 

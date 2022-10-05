@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.model.EventModel;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
 import com.gcu.service.ScheduleServiceInterface;
@@ -79,4 +80,32 @@ public class HomeController {
 		//Navigate back
 		return "events";
 	}
+	
+	
+	/* Add Event Notes: ---
+	 * error 1 resolved: Eventmodel eventModel ties to the HTML th:object="eventModel"
+	 * error 2 resolved: maping was weird. Forgot what I did but I changed something to make it work
+	 * error 3 unresolved: addEvent does not work as intended
+	 * TODO: Link the form from the html page to the addEvent function
+	 */
+
+	//Redirects to home/events
+	@PostMapping("/addEvent")
+	public String addEvent(@Valid EventModel eventModel, BindingResult bindingResult, Model model) {
+		
+		//check validation
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("Add title", "add form");
+			return "addEvent";
+		}
+		
+		//standard page attributes
+		model.addAttribute("SomeEvent", "EventModel");
+		model.addAttribute("newEvent", service.addEvent());  //including the service function
+		
+		
+		//Navigate back
+		return "addEvent";
+	}
+	
 }
