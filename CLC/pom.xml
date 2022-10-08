@@ -17,6 +17,15 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+	<!-- 
+	dependency template
+	
+	<dependency>
+			<groupId></groupId>
+			<artifactId></artifactId>
+		</dependency>
+		 -->
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -63,6 +72,17 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		
+		<!-- JDBC Dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 		
 	</dependencies>
 
