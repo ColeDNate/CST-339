@@ -63,6 +63,16 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!--  for spring jdbc and mysql -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		
 		
 	</dependencies>
 

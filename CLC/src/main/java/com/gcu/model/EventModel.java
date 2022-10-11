@@ -9,11 +9,12 @@ import javax.validation.constraints.Size;
 //Start class
 public class EventModel{
 	
-	//variables?
+	/*** VARIABLES ***/
+	@NotNull(message="unique ID required")
+	private Long id;
 	@NotNull(message="Event name is a required field")
 	@Size(min=1, max=32, message="User name must between 1 and 32 characters")
 	private String eventName;
-	private Calendar eventDate;
 	
 	//placeholder variables
 	@NotNull(message="Event year is a required field")
@@ -22,7 +23,8 @@ public class EventModel{
 	private int month;
 	@NotNull(message="Event day is a required field")
 	private int day;
-	
+
+	private Calendar eventDate;
 	
 	
 	/*** CONSTRUCTORS ***/
@@ -33,6 +35,12 @@ public class EventModel{
 	}
 	//simple date constructor
 	public EventModel(String eventName, int year, int month, int day) {
+		setEventName(eventName);
+		setDate(year, month, day);
+	}
+	//simple date with id
+	public EventModel(Long id, String eventName, int year, int month, int day) {
+		setId(id);
 		setEventName(eventName);
 		setDate(year, month, day);
 	}
@@ -49,6 +57,13 @@ public class EventModel{
 	
 	
 	/*** ACCESSORS AND MUTATORS ***/
+	//id
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getId() {
+		return id;
+	}
 	//event name
 	public String getEventName() {
 		return eventName;

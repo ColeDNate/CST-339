@@ -1,0 +1,1 @@
+SELECT * FROM cst339.events;
