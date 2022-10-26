@@ -6,13 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="CLC")
 public class EventEntity {
 	//not sure if "id" is needed
-	@Id String id;
-	String name;
-	int year;
-	int month;
-	int day;
-	int hour;
-	int minute;
+	@Id
+	public String id;
+	public String name;
+	public int year;
+	public int month;
+	public int day;
+	public int hour;
+	public int minute;
 	
 	public EventEntity() {
 		
