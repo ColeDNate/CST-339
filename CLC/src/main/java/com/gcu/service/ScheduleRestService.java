@@ -20,6 +20,7 @@ public class ScheduleRestService {
 	/* TODO: function needs fixing
 	 * 
 	public @Autowired ScheduleServiceInterface schedule;
+	
 	@GetMapping(path = "/getjson", 
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<EventModel> getOrdersAsJson() {
