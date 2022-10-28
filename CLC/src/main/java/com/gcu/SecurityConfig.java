@@ -16,7 +16,8 @@ import com.gcu.service.UserBusinessService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
-	PasswordEncoder passEnc;
+	PasswordEncoder passEnc; //Makes a cycle with itself... somehow. 
+	//1=2? Because a cycle should need a minimum of 2 - I think.
 	UserBusinessService uBServe;
 	
 	@Bean
