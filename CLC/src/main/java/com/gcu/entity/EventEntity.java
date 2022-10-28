@@ -14,7 +14,15 @@ public class EventEntity {
 	public int day;
 	public int hour;
 	public int minute;
-	
+	//org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eventRepository' 
+	//defined in com.gcu.EventRepository defined in @EnableMongoRepositories declared on 
+	//MongoRepositoriesRegistrar.EnableMongoRepositoriesConfiguration: Invocation of init method failed; 
+	//nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for 
+	//public abstract void 
+	//com.gcu.EventRepository.insert(java.lang.String,java.lang.String,java.lang.String,int,int,int,int,int); 
+	//Reason: No property 'insert' found for type 'EventEntity'; nested exception is 
+	//org.springframework.data.mapping.PropertyReferenceException: No property 'insert' found for type 'EventEntity'
+
 	public EventEntity() {
 		
 	}
