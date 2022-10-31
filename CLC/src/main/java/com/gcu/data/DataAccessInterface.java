@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DataAccessInterface <T> {
 	/**
-	 * Data interface
+	 * Data access interface
 	 */
 	public List<T> findAll();
 	public boolean create(T t);
