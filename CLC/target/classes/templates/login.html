@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate = "layouts/defaultTemplate"> 
+
+	<head> 
+	
+		<meta charset = "UTF-8">
+		<meta name = "Authors" content = "Matthew R McCormack and David 'Nate' Cole">
+		<meta name = "date" content = "October 27, 2022">
+	
+	</head>
+	
+	<body>
+		<div layout:fragment = "content">
+		<body text = 0000aa>
+	
+		<div th:if="${param.error}">  Invalid Username or Password </div>
+		<!-- this should map with HomeController, I think-->
+		<form th:action="@{/scheduler/}" method = "post">
+		<table>
+		<!-- Username -->
+			<tr>
+				<td style="padding:5px"> Username </td>
+				<td style="padding:5px"> 
+					<input type="text" name="username" id="username"
+						placeholder="Username" required/> 
+				</td>
+			</tr>
+		<!-- Password -->
+			<tr>
+			<td style="padding:5px"> Password </td>
+				<td style="padding:5px"> 
+					<input type="password" name="password" id="password"
+						placeholder="Password" required/> 
+				</td>
+			</tr>
+		<!-- Button -->
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="Sign In">
+				</td>
+			</tr>
+		
+		</table>
+	
+	</body>
+</html>

@@ -55,6 +55,12 @@ public class UserDataService implements DataAccessInterface, UserDataAccessInter
 	public boolean delete(Object t) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Object findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	} 
 	
 }

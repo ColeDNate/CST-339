@@ -10,6 +10,9 @@ import javax.validation.constraints.Size;
 public class EventModel{
 	
 	//variables?
+	//id for some reason
+	private long id;
+	
 	@NotNull(message="Event name is a required field")
 	@Size(min=1, max=32, message="User name must between 1 and 32 characters")
 	private String eventName;
@@ -49,9 +52,14 @@ public class EventModel{
 	
 	
 	/*** ACCESSORS AND MUTATORS ***/
-	
+	//id
+	public void setId(long id) {
+		this.id= id;
+	}
+	public Long getId() {
+		return id;
+	}
 	//event name
-	
 	/**
 	 * @return String eventName
 	 */

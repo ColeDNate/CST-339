@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+	<!-- NOTE -->
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate"layouts/defaultTemplate">
+	<!-- Simple author info for easy citation -->
+	<head>
+	<meta charset = "UTF8">
+	<meta name = "Author" content = "Group 1">
+	<meta name = "date" content = "September 22, 2022">
+	</head>
+	
+	<!-- Start body with beige-ish background, Times New Roman Font, and color aqua (subject to change) -->
+	<body style = "background-color:rgb(180, 154, 118); font-family:'Times New Roman', Times, serif; color:aqua"> 
+		<div layout:fragment="content">
+		<!-- Visible title of webpage -->
+			<header style = "background-color:maroon; color:aqua">
+				<h1 style = "color: F95A0A; font-size:100px; text-align:center; text-justify:auto"> 
+					<strong>Scheduler Home </strong>
+				</h1>
+			</header>
+		<!-- Body of webpage -->
+			<h3 style = "text-align:center; text-justify:auto; font-size:20px"> 
+			Welcome to the MySchedule.net website! Please use responsibly ;). <br/> <br/>
+			Below you can sign in to access your schedule. Just click [Login/Register]!
+			</h3>
+		<!-- Nav Table -->
+			<table style = "position:absolute;">
+				<tr>
+					<td> Login/Register </td> 
+				</tr>
+				<tr>
+				<form action="#" th:action="@{login}" th:object="${LoginModel}" method="post">
+					<td colspan = "2"> <input type = "submit" value = "Login"/> </td>
+				</form>
+				</tr>
+				<tr>
+				<form action="#" th:action="@{register}" th:object="${RegisterModel}" method="post">
+					<td colspan = "2"> <input type = "submit" value = "Register"/> </td>
+				</form>
+				</tr>
+			</table>
+			
+			
+			<!-- Footer -->
+			<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+		  <footer> 
+		   	<h6 style = "position:absolute; "> We are not responsible for how users utilize this sight, and waive any responsibility for misconduct. <br/> <br/> <br/>
+		   	Copyright 2022</h6>
+		  </footer>
+		</div>
+	</body>
+
+
+</html>

@@ -88,5 +88,11 @@ public class EventDataService implements DataAccessInterface<EventEntity> {
 		}
 		return true;
 	}
+
+	@Override
+	public EventEntity findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

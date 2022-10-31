@@ -80,4 +80,10 @@ public class ScheduleService implements ScheduleServiceInterface {
 		System.out.println("This is the destroy function");
 	}
 
+	@Override
+	public EventModel addEvent(EventModel eventModel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
