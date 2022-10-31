@@ -1,38 +1,45 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-		layout:decorate"layouts/defaultTemplate">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate = "layouts/defaultTemplate"> 
+
+	<head> 
 	
-	<head>
+		<meta charset = "UTF-8">
+		<meta name = "Authors" content = "Matthew R McCormack and David 'Nate' Cole">
+		<meta name = "date" content = "October 27, 2022">
+	
 	</head>
 	
-	<body style = "background-color:rgb(180, 154, 118); font-family:'Times New Roman', Times, serif; color:aqua">
-		<div layout:fragment="content">
+	<body>
+		<div layout:fragment = "content">
+		<body text = 0000aa>
+	
+		<div th:if="${param.error}">  Invalid Username or Password </div>
+		<!-- this should map with HomeController, I think-->
+		<form th:action="@{/scheduler/}" method = "post">
+		<table>
+		<!-- Username -->
+			<tr>
+				<td style="padding:5px"> Username </td>
+				<td style="padding:5px"> 
+					<input type="text" name="username" id="username"
+						placeholder="Username" required/> 
+				</td>
+			</tr>
+		<!-- Password -->
+			<tr>
+			<td style="padding:5px"> Password </td>
+				<td style="padding:5px"> 
+					<input type="password" name="password" id="password"
+						placeholder="Password" required/> 
+				</td>
+			</tr>
+		<!-- Button -->
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="Sign In">
+				</td>
+			</tr>
 		
-			<h2>Scheduling Login</h2>
-		
-			<form action="#" th:action="@{events}" th:object="${loginModel}" method="post">
-				<table>
-					<tr>
-						<td>User Name:</td><td><input type="text" th:field="*{username}"></td>
-							<td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:erros="*{username}">User Name Errors</h5></td>
-					</tr>
-					<tr>
-						<td>Password:</td><td><input type="password" th:field="*{password}"></td>
-							<td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:erros="*{password}">Password Errors</h5></td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="Submit"></td>
-					</tr>
-				</table>
-				
-				<div th:if="${#fields.hasErrors('*')}">List of Error</div>
-				<div th:each="err : ${#fields.errors('*')}">
-					<span style="color:red" th:text="${err}" class="fieldError"></span>
-				</div>
-			</form>
-		</div>
+		</table>
+	
 	</body>
-
-
 </html>

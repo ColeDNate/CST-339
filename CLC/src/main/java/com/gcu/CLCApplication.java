@@ -8,6 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan({ "com.gcu" })
 public class CLCApplication {
 
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CLCApplication.class, args);
 	}

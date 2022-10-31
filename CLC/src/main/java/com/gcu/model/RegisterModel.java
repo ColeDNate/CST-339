@@ -48,57 +48,113 @@ public class RegisterModel {
 	/***** FUNCTIONS *****/
 	
 	//First name
+	/**
+	 * setter
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 	
 	//Last name
+	/**
+	 * setter
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 	
 	//Email
+	/**
+	 * setter
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email= email;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getEmail() {
 		return email;
 	}
 	
 	//Address
+	/**
+	 * setter
+	 * @param address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getAddress() {
 		return address;
 	}
 	
 	//Phone number
+	/**
+	 * setter
+	 * @param phoneNumber
+	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	
 	//user name
+	/**
+	 * setter
+	 * @param username
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getUsername() {
 		return username;
 	}
 	
 	//Password
+	/**
+	 * setter
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	/**
+	 * getter
+	 * @return
+	 */
 	public String getPassword() {
 		return password;
 	}

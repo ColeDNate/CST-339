@@ -9,12 +9,11 @@ import javax.validation.constraints.Size;
 //Start class
 public class EventModel{
 	
-	/*** VARIABLES ***/
-	@NotNull(message="unique ID required")
-	private Long id;
+	//variables?
 	@NotNull(message="Event name is a required field")
 	@Size(min=1, max=32, message="User name must between 1 and 32 characters")
 	private String eventName;
+	private Calendar eventDate;
 	
 	//placeholder variables
 	@NotNull(message="Event year is a required field")
@@ -23,8 +22,7 @@ public class EventModel{
 	private int month;
 	@NotNull(message="Event day is a required field")
 	private int day;
-
-	private Calendar eventDate;
+	
 	
 	
 	/*** CONSTRUCTORS ***/
@@ -35,12 +33,6 @@ public class EventModel{
 	}
 	//simple date constructor
 	public EventModel(String eventName, int year, int month, int day) {
-		setEventName(eventName);
-		setDate(year, month, day);
-	}
-	//simple date with id
-	public EventModel(Long id, String eventName, int year, int month, int day) {
-		setId(id);
 		setEventName(eventName);
 		setDate(year, month, day);
 	}
@@ -57,17 +49,19 @@ public class EventModel{
 	
 	
 	/*** ACCESSORS AND MUTATORS ***/
-	//id
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Long getId() {
-		return id;
-	}
+	
 	//event name
+	
+	/**
+	 * @return String eventName
+	 */
 	public String getEventName() {
 		return eventName;
 	}
+	/**
+	 * sets event name
+	 * @param eventName
+	 */
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
 	}
@@ -79,6 +73,9 @@ public class EventModel{
 	public void setYear(int year) {
 		this.year = year;
 	}
+	/**
+	 * @return Calendar.year value of event.Date
+	 */
 	public int getYear() {
 		return eventDate.get(Calendar.YEAR);
 	}
@@ -86,6 +83,9 @@ public class EventModel{
 	public void setMonth(int month) {
 		this.month = month;
 	}
+	/**
+	 * @return Calendar.month value of event.Date
+	 */
 	public int getMonth() {
 		return eventDate.get(Calendar.MONTH);
 	}
@@ -93,16 +93,27 @@ public class EventModel{
 	public void setDay(int day) {
 		this.day = day;
 	}
+	/**
+	 * @return Calendar.day_of_month value of event.Date
+	 */
 	public int getDay() {
 		return eventDate.get(Calendar.DAY_OF_MONTH);
 	}
+	/**
+	 * @return Calendar.hour value of event.Date
+	 */
 	public int getHour() {
 		return eventDate.get(Calendar.HOUR);
 	}
+	/**
+	 * @return Calendar.minute value of event.Date
+	 */
 	public int getMinute() {
 		return eventDate.get(Calendar.MINUTE);
 	}
-	
+	/**
+	 * @return eventDate
+	 */
 	//event date
 	public Calendar getEventDate() {
 		return eventDate;

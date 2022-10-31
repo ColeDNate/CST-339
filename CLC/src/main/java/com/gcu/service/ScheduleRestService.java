@@ -20,6 +20,7 @@ public class ScheduleRestService {
 	/* TODO: function needs fixing
 	 * 
 	public @Autowired ScheduleServiceInterface schedule;
+	
 	@GetMapping(path = "/getjson", 
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<EventModel> getOrdersAsJson() {
@@ -28,6 +29,10 @@ public class ScheduleRestService {
 	*/
 	@GetMapping(path = "/getxml", produces = {MediaType.APPLICATION_XML_VALUE})
 	//instructions show 'OrdersList' but this returns an error, so 'OrderList' was used.
+	/**
+	 * sets and returns a new base EventModel with name "null" and year/month/day of 0
+	 * @return evMod
+	 */
 	public EventModel getOrdersAsXml() {
 		EventModel evMod = new EventModel(null, 0, 0, 0);
 		evMod.getEventDate();

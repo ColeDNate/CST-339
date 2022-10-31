@@ -3,87 +3,90 @@ package com.gcu.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
-import com.gcu.data.repository.EventsRepository;
+import com.gcu.EventRepository;
+import com.gcu.entity.EventEntity;
 
-@Service
 public class EventDataService implements DataAccessInterface<EventEntity> {
 
-	/*** VARIABLES ***/
 	@Autowired
-	private EventsRepository eventsRepository;
-	@SuppressWarnings("unused")
-	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplateObject;
+	private EventRepository eventRepo;
+	private EventEntity ent;
 	
-	
-	/*** CONSTRUCTORS ***/
-	public EventDataService(EventsRepository ordersRepository, DataSource dataSource) {
-		this.eventsRepository = ordersRepository;
-		this.dataSource = dataSource;
-		this.jdbcTemplateObject= new JdbcTemplate(dataSource);		
+	public EventDataService(EventRepository eventRepo) {
+		this.eventRepo = eventRepo;
 	}
 	
+	/**
+	 * finds the events - I think. 
+	 */
 	
-	/*** INTERFACE METHODS ***/
 	@Override
 	public List<EventEntity> findAll() {
-		List<EventEntity> events = new ArrayList<EventEntity>();
-		
+		List<EventEntity> schedule = new ArrayList<EventEntity>();
 		try {
-			//get all entity orders
-			Iterable<EventEntity> eventsIterable = eventsRepository.findAll();
-			
-			//convert to a list
-			events = new ArrayList<EventEntity>();
-			eventsIterable.forEach(events::add);
+			Iterable<EventEntity> eventIt = eventRepo.findAll();
+			schedule = new ArrayList<EventEntity>();
+			eventIt.forEach(schedule::add);
 		}
-		catch(Exception e) {
-			e.printStackTrace();
+		
+		catch (Exception ex) {
+			System.out.println("something went wrong in data.EDS.findAll");
+			ex.printStackTrace();
 		}
-		return events;
+		return schedule;
 	}
-
-	@Override
-	public EventEntity findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 * Makes the events
+	 */
 	@Override
 	public boolean create(EventEntity event) {
-		//inject a datSource and use the jdbcTemplate to provide customized implementation
-		String sql = "INSERT INTO EVENTS(ID, EVENT_NAME, EVENT_YEAR, EVENT_MONTH) VALUES(?, ?, ?, ?, ?)";
 		try {
-			//execute SQL insert
-			jdbcTemplateObject.update(sql,event.getId(),
-										event.getEventName(),
-										event.getEventYear(),
-										event.getEventMonth(),
-										event.getEventDay());
+			this.eventRepo.save(event);
 		}
-		catch(Exception e) {
-			e.printStackTrace();
+		
+		catch (Exception ex) {
+			System.out.println("Something went wrong in data.EDS.create");
+			ex.printStackTrace();
 			return false;
 		}
 		return true;
 	}
 
+	/**
+	 * Updates the events
+	 */
 	@Override
 	public boolean update(EventEntity event) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		try {
+			this.eventRepo.insert("id=%s, name='%s', year='%s', month='%s', "
+				+ "day='%s', hour='%s', minute='%s'", ent.id, ent.name, ent.year, ent.month, ent.day, ent.hour, ent.minute);
+		}
+		
+		catch (Exception ex) {
+			System.out.println("Something went wrong in data.EDS.update");
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
 	}
-
+	/**
+	 * Deletes an event
+	 */
 	@Override
 	public boolean delete(EventEntity event) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			this.eventRepo.delete(event);
+		}
+		
+		catch (Exception ex) {
+			System.out.println("Something went wrong in data.EDS.delete");
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
 	}
-
+	
 }
