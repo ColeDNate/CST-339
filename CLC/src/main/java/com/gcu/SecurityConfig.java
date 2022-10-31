@@ -28,11 +28,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired //added just to make sure uBServe is Autowired, can *probably* be removed
 	UserBusinessService uBServe;
 	
+	/**
+	 * Anyway, the above store a PasswordEncoder entity in the static passEnc, 
+	 * and a UserBusinessService entity in the static uBServe. 
+	 */
+	
+	
+	/**
+	 * This is a bean that provides a BCryptPasswordEncoder
+	 */
 	@Bean
 	BCryptPasswordEncoder bPassEnc() {
 		return new BCryptPasswordEncoder();
 	}
 	
+	/**
+	 * This presumably configures the AuthenticationManagerBuilder
+	 * @param auth
+	 */
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth

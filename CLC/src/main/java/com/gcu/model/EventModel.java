@@ -49,10 +49,19 @@ public class EventModel{
 	
 	
 	/*** ACCESSORS AND MUTATORS ***/
+	
 	//event name
+	
+	/**
+	 * @return String eventName
+	 */
 	public String getEventName() {
 		return eventName;
 	}
+	/**
+	 * sets event name
+	 * @param eventName
+	 */
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
 	}
@@ -64,6 +73,9 @@ public class EventModel{
 	public void setYear(int year) {
 		this.year = year;
 	}
+	/**
+	 * @return Calendar.year value of event.Date
+	 */
 	public int getYear() {
 		return eventDate.get(Calendar.YEAR);
 	}
@@ -71,6 +83,9 @@ public class EventModel{
 	public void setMonth(int month) {
 		this.month = month;
 	}
+	/**
+	 * @return Calendar.month value of event.Date
+	 */
 	public int getMonth() {
 		return eventDate.get(Calendar.MONTH);
 	}
@@ -78,16 +93,27 @@ public class EventModel{
 	public void setDay(int day) {
 		this.day = day;
 	}
+	/**
+	 * @return Calendar.day_of_month value of event.Date
+	 */
 	public int getDay() {
 		return eventDate.get(Calendar.DAY_OF_MONTH);
 	}
+	/**
+	 * @return Calendar.hour value of event.Date
+	 */
 	public int getHour() {
 		return eventDate.get(Calendar.HOUR);
 	}
+	/**
+	 * @return Calendar.minute value of event.Date
+	 */
 	public int getMinute() {
 		return eventDate.get(Calendar.MINUTE);
 	}
-	
+	/**
+	 * @return eventDate
+	 */
 	//event date
 	public Calendar getEventDate() {
 		return eventDate;

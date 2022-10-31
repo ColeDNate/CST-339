@@ -14,6 +14,9 @@ public class EventEntity {
 	public int day;
 	public int hour;
 	public int minute;
+	/**
+	 * These create various variables
+	 */
 	//org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eventRepository' 
 	//defined in com.gcu.EventRepository defined in @EnableMongoRepositories declared on 
 	//MongoRepositoriesRegistrar.EnableMongoRepositoriesConfiguration: Invocation of init method failed; 
@@ -26,7 +29,17 @@ public class EventEntity {
 	public EventEntity() {
 		
 	}
-	
+	/**
+	 * @author matthewrmccormack
+	 * @param string
+	 * @param id
+	 * @param name
+	 * @param year
+	 * @param month
+	 * @param day
+	 * @param hour
+	 * @param minute
+	 */
 	public EventEntity(String id, String name, int year, int month, int day,
 			int hour, int minute) {
 		this.id = id;
@@ -38,6 +51,9 @@ public class EventEntity {
 		this.minute = minute;
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public String toString() {
 		return String.format("id=%s, name='%s', year='%s', month='%s', "

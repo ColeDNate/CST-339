@@ -18,6 +18,10 @@ public class EventDataService implements DataAccessInterface<EventEntity> {
 		this.eventRepo = eventRepo;
 	}
 	
+	/**
+	 * finds the events - I think. 
+	 */
+	
 	@Override
 	public List<EventEntity> findAll() {
 		List<EventEntity> schedule = new ArrayList<EventEntity>();
@@ -33,7 +37,9 @@ public class EventDataService implements DataAccessInterface<EventEntity> {
 		}
 		return schedule;
 	}
-
+	/**
+	 * Makes the events
+	 */
 	@Override
 	public boolean create(EventEntity event) {
 		try {
@@ -48,6 +54,9 @@ public class EventDataService implements DataAccessInterface<EventEntity> {
 		return true;
 	}
 
+	/**
+	 * Updates the events
+	 */
 	@Override
 	public boolean update(EventEntity event) {
 		
@@ -63,7 +72,9 @@ public class EventDataService implements DataAccessInterface<EventEntity> {
 		}
 		return true;
 	}
-
+	/**
+	 * Deletes an event
+	 */
 	@Override
 	public boolean delete(EventEntity event) {
 		try {

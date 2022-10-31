@@ -11,5 +11,10 @@ public class UserEntity {
 	@Indexed(unique=true)
 	String username;
 	String password;
+	/**
+	 * creates a UserEntity that
+	 * has the parameters of 
+	 * id, username, and password
+	 */
 
 }

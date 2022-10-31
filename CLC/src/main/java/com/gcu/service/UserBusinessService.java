@@ -20,6 +20,13 @@ public class UserBusinessService implements UserDetailsService{
 	
 
 	@Override
+	/**
+	 * loads a user that presumably matches the provided username
+	 * not sure if this is necessary for the program, or just vestigial 
+	 * @param username
+	 * @return User
+	 * @throws UsernameNotFoundException
+	 */
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserEntity userEnt = dataServe.findByUsername(username);
 		if(userEnt != null) {

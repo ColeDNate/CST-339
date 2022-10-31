@@ -13,6 +13,12 @@ import com.gcu.service.ScheduleServiceInterface;
 public class CLCConfig{
 	
 	@Bean(name="ScheduleService", initMethod="init", destroyMethod="destroy")
+	/**
+	 *@author matthewrmccormack
+	 *this returns a ScheduleService
+	 *@bean
+	 *@return
+	 */
 	public ScheduleServiceInterface getSchedule() {
 		return new ScheduleService();
 	}
