@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.gcu.model.EventModel;
+
 @Table("EVENTS")
 public class EventEntity {
 	
@@ -40,6 +42,14 @@ public class EventEntity {
 		setEventYear(eventYear);
 		setEventMonth(eventMonth);
 		setEventDay(eventDay);
+	}
+	//EventModel
+	public EventEntity(EventModel eventModel) {
+		setId(eventModel.getId());
+		setEventName(eventModel.getEventName());
+		setEventYear(eventModel.getYear());
+		setEventMonth(eventModel.getMonth());
+		setEventDay(eventModel.getDay());
 	}
 	
 	

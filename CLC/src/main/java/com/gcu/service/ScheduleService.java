@@ -38,6 +38,7 @@ public class ScheduleService implements ScheduleServiceInterface {
 		return eventsDomain;
 	}
 	
+	
 	//Add Event adds an event to the list of the events
 	public void addEvent(String name, int year, int month, int day) {
 		//eventList.add(new EventModel(name, year, month, day));
@@ -50,6 +51,15 @@ public class ScheduleService implements ScheduleServiceInterface {
 	public EventModel addEvent() {
 		EventModel event = new EventModel("fake event", 1, 1, 1);
 		//eventList.add(event);
+		return event;
+	}
+	//test add #2 event with an existing Event Model
+	public EventModel addEvent(EventModel eventModel) {
+		EventModel event = new EventModel(eventModel.getId(), 
+							eventModel.getEventName(),
+							eventModel.getYear(),
+							eventModel.getMonth(),
+							eventModel.getDay());
 		return event;
 	}
 	

@@ -1,6 +1,10 @@
 package com.gcu.controller;
 
+import java.util.Calendar;
+
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -8,9 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.data.DataAccessInterface;
+import com.gcu.data.EventDataService;
+import com.gcu.data.EventEntity;
 import com.gcu.model.EventModel;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
@@ -28,6 +36,8 @@ public class HomeController {
 	@Autowired
 	private ScheduleServiceInterface service;
 	
+	@Autowired
+	private DataAccessInterface<EventEntity> sqlService;
 	
 	
 	/**
@@ -83,8 +93,8 @@ public class HomeController {
 	
 	
 	/* Add Event Notes: ---
-	 * error 1 resolved: Eventmodel eventModel ties to the HTML th:object="eventModel"
-	 * error 2 resolved: maping was weird. Forgot what I did but I changed something to make it work
+	 * error 1 resolved: EventModel eventModel ties to the HTML th:object="eventModel"
+	 * error 2 resolved: mapping was weird. Forgot what I did but I changed something to make it work
 	 * error 3 unresolved: addEvent does not work as intended
 	 * TODO: Link the form from the html page to the addEvent function
 	 */
@@ -101,7 +111,7 @@ public class HomeController {
 		
 		//standard page attributes
 		model.addAttribute("SomeEvent", "EventModel");
-		model.addAttribute("newEvent", service.addEvent());  //including the service function
+		model.addAttribute("newEvent", sqlService.create(new EventEntity(eventModel)));
 		
 		
 		//Navigate back
